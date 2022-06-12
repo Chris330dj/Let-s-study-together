@@ -6,14 +6,23 @@ function sleep1(delay) {
     }
 }
 
+// promise方式实现延后执行
 const sleep = (delay) => {
     return new Promise(resolve => setTimeout(resolve, delay));
 }
 
-// sleep(1000).then(()=>{})
+// async配合promise阻塞线程, 阻塞只发生在async函数里
+async function init(){
+    console.log('hi.');
+    await sleep(1000);
+    console.log('another hi.'); // 被await阻塞
+}
 
-console.log('hi.');
-sleep(1000).then(() => {
-    console.log('another hi.');
-});
+init();
+
+// sleep(1000).then(()=>{})
+// console.log('hi.');
+// sleep(1000).then(() => {
+//     console.log('another hi.');
+// });
 // console.log('another hi.');
