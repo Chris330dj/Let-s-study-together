@@ -3,7 +3,7 @@
  * @param {number[][]} prerequisites
  * @return {boolean}
  */
-// 热评解法
+// BFS版本
 var canFinish = function (n, preList) {
     // 维护一个入度数组, 入度为0的课可以上
     let inDegree = new Array(n).fill(0);
@@ -45,7 +45,7 @@ var canFinish = function (n, preList) {
     return count === n;
 };
 
-// 判断是否有环解法
+// DFS版本
 var canFinish2 = function (n, preList) {
     let hasCircle = false;
     let graph = buildGraph(n, preList);
